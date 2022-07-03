@@ -8,12 +8,28 @@
 </head>
 <body>
     <div id="content"></div>
-    <script>
-        fetch("https://ci-swapi.herokuapp.com/api/people/")
+    <!-- <script>
+        fetch("https://ci-swapi.herokuapp.com/api/")
         .then(response => response.json()) // to get our response, convert it to .text (or .json to turn it into an object?!) and store it in this variable called response using our arrow function
         .then(data => {
-            document.getElementById("content").innerText = data; // set the inner text of our content div to the data that we returned
+            document.getElementById("content").innerText = data.people; // set the inner text of our content div to the data that we returned
         })
+        .catch((e) => {
+            console.error("Error: ", e);
+        })
+    </script> -->
+    <script>
+        fetch("https://ci-swapi.herokuapp.com/api/")
+        .then(response => response.json()) // to get our response, convert it to .text (or .json to turn it into an object?!) and store it in this variable called response using our arrow function
+        .then(data => displayData(data)) // coding in this style separates retrieving the data from manipulating and displaying it.
+        .catch((e) => {
+            console.error("Error: ", e);
+        })
+
+        // Callback function 
+        function displayData(data) {
+            document.getElementById("content").innerText = data.people; // coding in this style separates retrieving the data from manipulating and displaying it.
+        }
     </script>
 </body>
 </html>
