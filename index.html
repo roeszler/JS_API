@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        fetch("https://ci-swapi.herokuapp.com/api/people/")
+        .then(response => response.json()) // to get our response, convert it to .text (or .json to turn it into an object?!) and store it in this variable called response using our arrow function
+        .then(data => {
+            document.getElementById("content").innerText = data; // set the inner text of our content div to the data that we returned
+        })
+    </script>
+</body>
+</html>
